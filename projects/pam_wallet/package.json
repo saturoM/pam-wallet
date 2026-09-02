@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "desk": "npm run start:dev --prefix api & npm run dev --prefix web",
+    "build": "npm run build --prefix web",
+    "start": "npm start --prefix api",
     "test": "npm test --prefix api && python3 test_pam.py && npm test --prefix web"
   }
 }

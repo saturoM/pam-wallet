@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: pam-wallet
+    runtime: node
+    plan: free
+    rootDir: projects/pam_wallet
+    buildCommand: npm ci --prefix api && npm ci --prefix web && npm run build --prefix web
+    startCommand: npm start --prefix api
+    healthCheckPath: /api/desk

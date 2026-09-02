@@ -16,6 +16,8 @@ npm run dev --prefix web
 
 Open **http://127.0.0.1:5173** — desk. Exam (lectures 1–5): **http://127.0.0.1:5173/#/exam**.
 
+Production (one process, after `npm run build` at this folder): **http://127.0.0.1:3001** and **http://127.0.0.1:3001/#/exam**. Nest serves `web/dist`.
+
 Nest `GET /api/quiz` · `POST /api/quiz/check` · `POST /api/quiz/grade`. **30** questions. Answers stay on the server. Check returns a hint only when the answer is wrong.
 
 Walk: Deposit $50 → captured → Submit KYC → Approve KYC → Withdraw $20 → Payout sent.

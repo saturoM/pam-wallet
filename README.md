@@ -29,6 +29,21 @@ npm run dev --prefix web
 
 Walk on the desk: Deposit $50 → captured → Submit KYC → Approve KYC → Withdraw $20 → Payout sent.
 
+One process in production: build the React app, then Nest serves desk + exam + `/api`.
+
+```bash
+cd projects/pam_wallet
+npm install --prefix api && npm install --prefix web
+npm run build
+npm start
+```
+
+Desk: `http://127.0.0.1:3001` · exam: `http://127.0.0.1:3001/#/exam`.
+
+On Render: this repo’s `render.yaml` (Blueprint). In-memory book — a sleep/restart wipes the walk.
+
+[Deploy to Render](https://render.com/deploy?repo=https://github.com/saturoM/pam-wallet)
+
 `npm test` in `projects/pam_wallet` runs Nest + Python + the cashier/exam UI tests. Nest `tsx` is not watch — restart the API after quiz changes.
 
 ## Lectures

@@ -5,19 +5,19 @@
   "scripts": {
     "start": "tsx src/main.ts",
     "start:dev": "tsx watch --tsconfig tsconfig.json src/main.ts",
-    "test": "tsx --test src/pam.test.ts src/desk.http.test.ts src/quiz.test.ts src/quiz.http.test.ts"
+    "test": "tsx --test src/pam.test.ts src/desk.http.test.ts src/quiz.test.ts src/quiz.http.test.ts src/static.http.test.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.6",
     "@nestjs/core": "^11.1.6",
     "@nestjs/platform-express": "^11.1.6",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.2"
+    "rxjs": "^7.8.2",
+    "tsx": "^4.20.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
-    "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }
 }

@@ -1,4 +1,6 @@
 out/
+jobs_scrape.py
+req_parse.py
 __pycache__/
 *.pyc
 .DS_Store

@@ -1,0 +1,60 @@
+{
+  "id": "tpm_igaming_learn",
+  "as_of": "2026-09-01",
+  "goal": "Senior technical PM · gambling / fintech",
+  "method": "JD must-haves + desk transfer + 4 pet projects",
+    "current_module": "02_posting_captured",
+  "modules": [
+    {
+      "id": "01_money_path",
+      "week": 1,
+      "status": "in_progress",
+      "skill": "PAM / TAKE≠FILL language",
+      "file": "career/learn/01_money_path.md",
+      "exercise": "career/learn/exercises/01_ledger_postings.md",
+      "done_when": "Sequence + postings table another PM can implement"
+    },
+    {
+      "id": "02_spec_craft",
+      "week": 2,
+      "status": "pending",
+      "skill": "PRD / APIs / invariants",
+      "done_when": "OpenAPI draft for deposit/bet/settle/withdraw + error codes"
+    },
+    {
+      "id": "03_wallet_build",
+      "week": "3-5",
+      "status": "pending",
+      "skill": "Project 1 · ledger",
+      "done_when": "Recon board catches planted 0.01; tests for idempotent bets"
+    },
+    {
+      "id": "04_rg_limits",
+      "week": 6,
+      "status": "pending",
+      "skill": "Project 2 · soft vs hard",
+      "done_when": "State machine + flatten at hard; audit log replayable"
+    },
+    {
+      "id": "05_payments",
+      "week": 7,
+      "status": "pending",
+      "skill": "Project 3 · PSP routing",
+      "done_when": "3 mock PSPs; no retry on 3DS fail; approval vs cost board"
+    },
+    {
+      "id": "06_bonus_abuse",
+      "week": 8,
+      "status": "pending",
+      "skill": "Project 4 · wagering",
+      "done_when": "Wagering weights + one abuse hold on payout"
+    },
+    {
+      "id": "07_case_studies",
+      "week": 9,
+      "status": "pending",
+      "skill": "Interview artifacts",
+      "done_when": "Four 2-page writeups: options, kill list, metric, sequence"
+    }
+  ]
+}

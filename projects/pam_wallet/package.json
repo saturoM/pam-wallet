@@ -1,0 +1,8 @@
+{
+  "name": "pam-wallet",
+  "private": true,
+  "scripts": {
+    "desk": "npm run start:dev --prefix api & npm run dev --prefix web",
+    "test": "npm test --prefix api && python3 test_pam.py && npm test --prefix web"
+  }
+}

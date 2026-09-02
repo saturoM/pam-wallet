@@ -4,7 +4,9 @@ Interview artifact for a Senior Technical PM (iGaming / fintech).
 
 Cashiers and games never write balance. Only PAM posts a double-entry ledger. Deposit click is TAKE. PSP `captured` is FILL.
 
-This repo is the money-path pack: five lectures, a desk you can click, and a 30-question exam the Nest API grades.
+**Open without install:** [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam)
+
+This repo is the money-path pack: five lectures, a desk you can click, and a 30-question exam the Nest API grades. First Render hit after sleep can take ~30s. In-memory book resets on restart.
 
 ## What’s in here
 
@@ -40,9 +42,7 @@ npm start
 
 Desk: `http://127.0.0.1:3001` · exam: `http://127.0.0.1:3001/#/exam`.
 
-On Render: this repo’s `render.yaml` (Blueprint). In-memory book — a sleep/restart wipes the walk.
-
-[Deploy to Render](https://render.com/deploy?repo=https://github.com/saturoM/pam-wallet)
+Live: [https://pam-wallet.onrender.com](https://pam-wallet.onrender.com/). Redeploy from this repo’s `render.yaml`.
 
 `npm test` in `projects/pam_wallet` runs Nest + Python + the cashier/exam UI tests. Nest `tsx` is not watch — restart the API after quiz changes.
 

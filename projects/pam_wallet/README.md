@@ -5,6 +5,8 @@ Interview artifact for Senior Technical PM (iGaming / fintech).
 
 ## See it
 
+Live: [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam)
+
 React cashier + Nest PAM. In-memory book (reset clears it).
 
 ```bash

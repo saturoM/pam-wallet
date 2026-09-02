@@ -12,7 +12,7 @@ This repo is the money-path pack: five lectures, a desk you can click, and a 30-
 
 | Path | What |
 |---|---|
-| [`learn/`](learn/) | Lectures 1–5 + exercises (pending ≠ captured → posting → bet → settle → withdraw) |
+| [`learn/`](learn/) | Lectures 1–5 · [decision log](learn/decision_log.md) · [sequence](learn/sequence.md) |
 | [`projects/pam_wallet/`](projects/pam_wallet/) | React cashier + Nest PAM + Python kernel |
 
 Not in this repo: live trading bots, bonus/wagering, PSP routing.

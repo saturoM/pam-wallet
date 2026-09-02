@@ -1,14 +1,14 @@
 {
   "id": "tpm_igaming_learn",
-  "as_of": "2026-09-01",
+  "as_of": "2026-09-02",
   "goal": "Senior technical PM · gambling / fintech",
   "method": "JD must-haves + desk transfer + 4 pet projects",
-    "current_module": "02_posting_captured",
+  "current_module": "07_case_studies",
   "modules": [
     {
       "id": "01_money_path",
       "week": 1,
-      "status": "in_progress",
+      "status": "closed",
       "skill": "PAM / TAKE≠FILL language",
       "file": "career/learn/01_money_path.md",
       "exercise": "career/learn/exercises/01_ledger_postings.md",
@@ -52,9 +52,11 @@
     {
       "id": "07_case_studies",
       "week": 9,
-      "status": "pending",
+      "status": "in_progress",
       "skill": "Interview artifacts",
-      "done_when": "Four 2-page writeups: options, kill list, metric, sequence"
+      "file": "career/learn/decision_log.md",
+      "exercise": "career/learn/exercises/decision_log_theory.md",
+      "done_when": "Decision log + sequence for another PM (options/kill/metric live in those two files)"
     }
   ]
 }

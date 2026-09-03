@@ -4,17 +4,17 @@ Interview artifact for a Senior Technical PM (iGaming / fintech).
 
 Cashiers and games never write balance. Only PAM posts a double-entry ledger. Deposit click is TAKE. PSP `captured` is FILL.
 
-**Open without install:** [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam) · [recon](https://pam-wallet.onrender.com/#/exam-recon) · [drill](https://pam-wallet.onrender.com/#/drill)
+**Open without install:** [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam) · [recon](https://pam-wallet.onrender.com/#/exam-recon) · [RG](https://pam-wallet.onrender.com/#/exam-rg) · [drill](https://pam-wallet.onrender.com/#/drill)
 
 This repo is the money-path pack: five lectures, recon lesson, a desk you can click, exams Nest grades, and a spot-the-slip gym. First Render hit after sleep can take ~30s. In-memory book resets on restart.
 
-**Today (module 03):** lecture [`learn/03_recon.md`](learn/03_recon.md) → test [`#/exam-recon`](https://pam-wallet.onrender.com/#/exam-recon) → practice [`learn/exercises/03_recon.md`](learn/exercises/03_recon.md). Log + sequence: [`03_decision_log.md`](learn/03_decision_log.md) · [`03_sequence.md`](learn/03_sequence.md).
+**Today (module 04):** terms [`learn/04_terms.md`](learn/04_terms.md) → lecture [`learn/04_rg.md`](learn/04_rg.md) → test [`#/exam-rg`](https://pam-wallet.onrender.com/#/exam-rg) → practice [`learn/exercises/04_rg.md`](learn/exercises/04_rg.md). Log: [`04_decision_log.md`](learn/04_decision_log.md).
 
 ## What’s in here
 
 | Path | What |
 |---|---|
-| [`learn/`](learn/) | Lectures 1–5 · recon (`03_recon.md`) · [progress](learn/progress.md) · logs / sequences |
+| [`learn/`](learn/) | Lectures 1–5 · recon · RG (`04_rg.md`) · [progress](learn/progress.md) · logs / sequences |
 | [`projects/pam_wallet/`](projects/pam_wallet/) | React cashier + Nest PAM + Python kernel |
 
 Not in this repo: live trading bots, bonus/wagering, PSP routing.
@@ -31,6 +31,7 @@ npm run dev --prefix web
 - Desk: [http://127.0.0.1:5173](http://127.0.0.1:5173)
 - Exam (lectures 1–5): [http://127.0.0.1:5173/#/exam](http://127.0.0.1:5173/#/exam)
 - Recon exam: [http://127.0.0.1:5173/#/exam-recon](http://127.0.0.1:5173/#/exam-recon)
+- RG exam: [http://127.0.0.1:5173/#/exam-rg](http://127.0.0.1:5173/#/exam-rg)
 - Gym (spot the slip): [http://127.0.0.1:5173/#/drill](http://127.0.0.1:5173/#/drill)
 
 Walk on the desk: Deposit $50 → captured → Submit KYC → Approve KYC → Withdraw $20 → Payout sent.
@@ -60,7 +61,8 @@ Live: [https://pam-wallet.onrender.com](https://pam-wallet.onrender.com/). Redep
 4. [`04_settle.md`](learn/04_settle.md) — lose / void / win (win is two postings)  
 5. [`05_withdraw.md`](learn/05_withdraw.md) — withdraw click **is** a hold posting  
 
-6. [`03_recon.md`](learn/03_recon.md) — **module 03** · recon (balanced ≠ PSP). Test: `#/exam-recon`. Practice: [`exercises/03_recon.md`](learn/exercises/03_recon.md).
+6. [`03_recon.md`](learn/03_recon.md) — module 03 · recon (balanced ≠ PSP). Test: `#/exam-recon`.
+7. [`04_rg.md`](learn/04_rg.md) — **module 04** · RG. Terms: [`04_terms.md`](learn/04_terms.md). Test: `#/exam-rg`. Practice: [`exercises/04_rg.md`](learn/exercises/04_rg.md).
 
 ## Decision (short)
 

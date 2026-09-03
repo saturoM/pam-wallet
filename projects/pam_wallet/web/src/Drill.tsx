@@ -87,6 +87,9 @@ export function Drill() {
           <a className="ghost nav-link" href="#/">
             На desk
           </a>
+          <a className="ghost nav-link" href="#/exam-rg">
+            Тест RG
+          </a>
           <a className="ghost nav-link" href="#/exam">
             Тест 1–5
           </a>

@@ -274,6 +274,20 @@ export const reconQuizApi = {
     }),
 };
 
+export const rgQuizApi = {
+  paper: () => json<QuizPaper>("/api/quiz/rg"),
+  check: (id: string, answer: QuizAnswers[string]) =>
+    json<CheckResult>("/api/quiz/rg/check", {
+      method: "POST",
+      body: JSON.stringify({ id, answer }),
+    }),
+  grade: (answers: QuizAnswers) =>
+    json<QuizResult>("/api/quiz/rg/grade", {
+      method: "POST",
+      body: JSON.stringify({ answers }),
+    }),
+};
+
 export const api = {
   desk: () => send("/api/desk"),
   reset: () => send("/api/reset", { method: "POST" }),

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   quizApi,
   reconQuizApi,
+  rgQuizApi,
   type CheckResult,
   type PostingAnswer,
   type PublicQuestion,
@@ -9,6 +10,8 @@ import {
   type QuizPaper,
   type QuizResult,
 } from "./api";
+
+type ExamPack = "money" | "recon" | "rg";
 
 const FIELD_LABEL: Record<string, string> = {
   new_postings: "нових проводок",
@@ -41,8 +44,8 @@ const KEY_PREFIXES = [
   "payout_fail:wd_1",
 ];
 
-export function Exam({ pack = "money" }: { pack?: "money" | "recon" }) {
-  const api = pack === "recon" ? reconQuizApi : quizApi;
+export function Exam({ pack = "money" }: { pack?: ExamPack }) {
+  const api = pack === "recon" ? reconQuizApi : pack === "rg" ? rgQuizApi : quizApi;
   const [paper, setPaper] = useState<QuizPaper | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [answers, setAnswers] = useState<QuizAnswers>({});
@@ -97,22 +100,24 @@ export function Exam({ pack = "money" }: { pack?: "money" | "recon" }) {
     <div className="page exam-page">
       <header className="top">
         <div>
-          <p className="kicker">{pack === "recon" ? "Тест · recon" : "Тест · лекції 1–5"}</p>
+          <p className="kicker">
+            {pack === "rg" ? "Тест · RG" : pack === "recon" ? "Тест · recon" : "Тест · лекції 1–5"}
+          </p>
           <h1>{paper?.title ?? "Завантаження…"}</h1>
         </div>
         <div className="top-actions">
           <a className="ghost nav-link" href="#/">
             На desk
           </a>
-          {pack === "recon" ? (
-            <a className="ghost nav-link" href="#/exam">
-              Тест 1–5
-            </a>
-          ) : (
-            <a className="ghost nav-link" href="#/exam-recon">
-              Тест recon
-            </a>
-          )}
+          <a className="ghost nav-link" href="#/exam-rg">
+            Тест RG
+          </a>
+          <a className="ghost nav-link" href="#/exam-recon">
+            Тест recon
+          </a>
+          <a className="ghost nav-link" href="#/exam">
+            Тест 1–5
+          </a>
           <a className="ghost nav-link" href="#/drill">
             Гім
           </a>
@@ -121,7 +126,18 @@ export function Exam({ pack = "money" }: { pack?: "money" | "recon" }) {
       <p className="lede">
         PAM перевіряє відповіді. Касир сюди не пише баланс. ~{paper?.minutes ?? 20} хв.
       </p>
-      {pack === "recon" ? (
+      {pack === "rg" ? (
+        <details className="exam-crib" open>
+          <summary>RG — прапорець, не проводка</summary>
+          <p>
+            <strong>Ліміт депозиту</strong> — ще на сайті, стеля на заведення.{" "}
+            <strong>Self-exclusion</strong> — вийшов; вивід можна. <strong>Freeze</strong> — оператор,
+            виводу немає. Новий клік після self-ex — <strong>gate</strong>. Раунд уже в грі —{" "}
+            <strong>void</strong>, не lose. Captured після self-ex у кишеню не класти: refund у PSP,
+            не вивід з каси.
+          </p>
+        </details>
+      ) : pack === "recon" ? (
         <details className="exam-crib" open>
           <summary>Recon — не проводка</summary>
           <p>
@@ -246,7 +262,7 @@ export function Exam({ pack = "money" }: { pack?: "money" | "recon" }) {
 function Question(props: {
   n: number;
   q: PublicQuestion;
-  pack: "money" | "recon";
+  pack: ExamPack;
   value: QuizAnswers[string] | undefined;
   marked: { ok: boolean; explanation: string } | undefined;
   check: CheckResult | undefined;
@@ -260,7 +276,7 @@ function Question(props: {
     <li className={`exam-q${tone ? (tone.ok ? " ok" : " bad") : ""}`}>
       <p>
         <span className="exam-n">
-          {pack === "recon" ? `${n} · recon` : `${n} · лекція ${q.lecture}`}
+          {pack === "rg" ? `${n} · RG` : pack === "recon" ? `${n} · recon` : `${n} · лекція ${q.lecture}`}
         </span>
         {q.prompt}
       </p>

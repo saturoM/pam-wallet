@@ -108,7 +108,7 @@ Walk для іншого PM: [`sequence.md`](sequence.md).
 
 **Наслідок.** Failed депозит звільняє room. Min $10 / max $200 — нижче міну = немає заявки.
 
-**Переглянути** на окремому проєкті: soft vs hard flatten (syllabus `04_rg_limits`). Тут лише entry gates.
+**Переглянути** на модулі 04: денний ліміт лишає відкритий раунд; self-exclusion — void (`04_rg_limits`). Тут лише entry gates.
 
 ---
 

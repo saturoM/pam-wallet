@@ -73,6 +73,6 @@
 
 ## Що цей sequence свідомо не покриває
 
-Bonus / wagering, маршрутизація кількох PSP, recon на $0.01, soft vs hard flatten. Не вклеювати в цей walk.
+Bonus / wagering, маршрутизація кількох PSP, recon на $0.01, void відкритого раунду на self-exclusion. Не вклеювати в цей walk.
 
 Якщо імплементатор питає «чому не на 3DS / чому холд на кліку» — не роздувати sequence, віддати [`decision_log.md`](decision_log.md).

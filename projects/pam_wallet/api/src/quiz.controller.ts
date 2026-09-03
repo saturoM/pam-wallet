@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { checkQuestion, gradeQuiz, publicQuiz, type QuizAnswers } from "./quiz";
 import { checkReconQuestion, gradeReconQuiz, publicReconQuiz } from "./quiz_recon";
+import { checkRgQuestion, gradeRgQuiz, publicRgQuiz } from "./quiz_rg";
 
 @Controller()
 export class QuizController {
@@ -32,5 +33,20 @@ export class QuizController {
   @Post("quiz/recon/grade")
   reconGrade(@Body() body: { answers?: QuizAnswers }) {
     return gradeReconQuiz(body.answers ?? {});
+  }
+
+  @Get("quiz/rg")
+  rgPaper() {
+    return publicRgQuiz();
+  }
+
+  @Post("quiz/rg/check")
+  rgCheck(@Body() body: { id?: string; answer?: QuizAnswers[string] }) {
+    return checkRgQuestion(body.id ?? "", body.answer);
+  }
+
+  @Post("quiz/rg/grade")
+  rgGrade(@Body() body: { answers?: QuizAnswers }) {
+    return gradeRgQuiz(body.answers ?? {});
   }
 }

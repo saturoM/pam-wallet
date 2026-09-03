@@ -269,6 +269,15 @@ export class Pam {
     if (dep.status === "captured" || dep.status === "failed") return dep;
 
     if (status === "captured") {
+      // RG: if the player is self-excluded at webhook time, we do not credit the wallet.
+      // Deposit becomes failed from PAM's perspective so daily room is released.
+      // (Refund / card reversal is handled by PSP out-of-band in this simplified model.)
+      if (this.stateOf(dep.playerId).status === "self_excluded") {
+        dep.status = "failed";
+        this.lastRecon = null;
+        return dep;
+      }
+
       const applied = this.ledger.post({
         debit: "cash_at_psp",
         credit: cashAcct(dep.playerId),

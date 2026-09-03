@@ -6,9 +6,9 @@ Cashiers and games never write balance. Only PAM posts a double-entry ledger. De
 
 **Open without install:** [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam) · [recon](https://pam-wallet.onrender.com/#/exam-recon) · [RG](https://pam-wallet.onrender.com/#/exam-rg) · [drill](https://pam-wallet.onrender.com/#/drill)
 
-This repo is the money-path pack: five lectures, recon lesson, a desk you can click, exams Nest grades, and a spot-the-slip gym. First Render hit after sleep can take ~30s. In-memory book resets on restart.
+This repo is the money-path pack: lectures 1–5, recon, RG, a desk you can click, exams Nest grades, and a spot-the-slip gym. First Render hit after sleep can take ~30s. In-memory book resets on restart.
 
-**Today (module 04):** terms [`learn/04_terms.md`](learn/04_terms.md) → lecture [`learn/04_rg.md`](learn/04_rg.md) → test [`#/exam-rg`](https://pam-wallet.onrender.com/#/exam-rg) → practice [`learn/exercises/04_rg.md`](learn/exercises/04_rg.md). Log: [`04_decision_log.md`](learn/04_decision_log.md).
+**Next (module 05):** PSP routing — not started. 04 RG is **closed**.
 
 ## What’s in here
 
@@ -62,7 +62,7 @@ Live: [https://pam-wallet.onrender.com](https://pam-wallet.onrender.com/). Redep
 5. [`05_withdraw.md`](learn/05_withdraw.md) — withdraw click **is** a hold posting  
 
 6. [`03_recon.md`](learn/03_recon.md) — module 03 · recon (balanced ≠ PSP). Test: `#/exam-recon`.
-7. [`04_rg.md`](learn/04_rg.md) — **module 04** · RG. Terms: [`04_terms.md`](learn/04_terms.md). Test: `#/exam-rg`. Practice: [`exercises/04_rg.md`](learn/exercises/04_rg.md).
+7. [`04_rg.md`](learn/04_rg.md) — **module 04 closed** · RG. Terms: [`04_terms.md`](learn/04_terms.md). Test: `#/exam-rg`.
 
 ## Decision (short)
 

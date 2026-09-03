@@ -90,6 +90,21 @@ describe("entry gates", () => {
     assert.equal(pam.snapshot().deposits.filter((d) => d.status === "pending").length, 1);
   });
 
+  it("captured webhook after self-exclusion does not credit cash (deposit becomes failed)", () => {
+    const pam = new Pam();
+    pam.requestDeposit("p_1", 5000, "dep_1");
+    pam.setPlayerStatus("p_1", "self_excluded");
+    pam.onPspWebhook("dep_1", "captured", "psp_aaa");
+
+    const snap = pam.snapshot();
+    const dep = snap.deposits.find((d) => d.depositId === "dep_1");
+    assert.equal(dep?.status, "failed");
+    assert.equal(pam.cashier("p_1").availableCents, 0);
+    assert.equal(pam.cashier("p_1").inPlayCents, 0);
+    assert.equal(pam.ledger.postings.length, 0);
+    assert.equal(pam.usedDepositCents("p_1"), 0);
+  });
+
   it("amount below min is not a posting", () => {
     const pam = new Pam();
     assert.throws(() => pam.requestDeposit("p_1", 500, "dep_1"), GateBlocked);

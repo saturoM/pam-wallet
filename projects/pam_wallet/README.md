@@ -31,7 +31,7 @@ Recon on the same desk: **Run recon** compares PAM postings to the PSP file. Pla
 
 Same desk, same book. Lectures live in [`learn/`](../../learn/).
 
-- **self-excluded** / **frozen** → no new deposit, no new bet. Open rounds still settle. Self-excluded **can withdraw**.
+- **self-excluded** / **frozen** → no new deposit, no new bet. Self-excluded **can withdraw**; freeze cannot. Open round: **Void** (stake back), not lose. **Webhook captured** after self-ex → deposit **failed**, no `player_cash` credit (PSP refund is out of band).
 - Daily deposit **$100**. Pending occupies the room. Failed does not.
 - Min **$10** / max **$200**. Try Deposit $5.
 - **KYC off** on deposit. Submit KYC is pending (not verified). Compliance approve opens withdraw. Reject does not.

@@ -3,7 +3,7 @@
   "as_of": "2026-09-03",
   "goal": "Senior technical PM · gambling / fintech",
   "method": "Each module 02–06 closes with decision log + sequence (same as 01/07). Pitch last.",
-  "current_module": "04_rg_limits",
+  "current_module": "05_payments",
   "close_rule": "career/learn/module_close.md",
   "modules": [
     {
@@ -36,11 +36,11 @@
     {
       "id": "04_rg_limits",
       "week": 6,
-      "status": "in_progress",
+      "status": "closed",
       "skill": "Project 2 · RG: limit, self-exclusion, freeze",
       "file": "career/learn/04_rg.md",
       "exercise": "career/learn/exercises/04_rg.md",
-      "done_when": "Lecture + #/exam-rg + practice. Terms in 04_terms.md. Six DL rows. Sequence follows the walks."
+      "done_when": "Lecture + #/exam-rg + practice + desk walk. Terms in 04_terms.md. Log + sequence. Captured after self-ex does not credit the wallet."
     },
     {
       "id": "05_payments",

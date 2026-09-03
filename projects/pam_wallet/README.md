@@ -5,7 +5,7 @@ Interview artifact for Senior Technical PM (iGaming / fintech).
 
 ## See it
 
-Live: [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam)
+Live: [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam) · [recon](https://pam-wallet.onrender.com/#/exam-recon) · [drill](https://pam-wallet.onrender.com/#/drill)
 
 React cashier + Nest PAM. In-memory book (reset clears it).
 
@@ -16,11 +16,13 @@ npm run start --prefix api
 npm run dev --prefix web
 ```
 
-Open **http://127.0.0.1:5173** — desk. Exam (lectures 1–5): **http://127.0.0.1:5173/#/exam**.
+Open **http://127.0.0.1:5173** — desk. Exam 1–5: **#/exam**. Recon: **#/exam-recon**. Spot-the-slip gym: **#/drill**.
 
-Production (one process, after `npm run build` at this folder): **http://127.0.0.1:3001** and **http://127.0.0.1:3001/#/exam**. Nest serves `web/dist`.
+Production (one process, after `npm run build` at this folder): **http://127.0.0.1:3001**, **#/exam**, **#/exam-recon**, **#/drill**. Nest serves `web/dist`.
 
-Nest `GET /api/quiz` · `POST /api/quiz/check` · `POST /api/quiz/grade`. **30** questions. Answers stay on the server. Check returns a hint only when the answer is wrong.
+Nest `GET /api/quiz` · `POST /api/quiz/check` · `POST /api/quiz/grade`. **30** questions (lectures 1–5).  
+Recon: `GET /api/quiz/recon` · `POST /api/quiz/recon/check` · `POST /api/quiz/recon/grade`. **8** questions.  
+Gym: `GET /api/drill` · `POST /api/drill/check` · `POST /api/drill/grade`. **8** cards. Answers stay on the server. Check returns a hint only when wrong.
 
 Walk: Deposit $50 → captured → Submit KYC → Approve KYC → Withdraw $20 → Payout sent.
 

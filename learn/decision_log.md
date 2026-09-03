@@ -8,7 +8,7 @@
 
 Desk: [live](https://pam-wallet.onrender.com/) · код `projects/pam_wallet/`.  
 Walk для іншого PM: [`sequence.md`](sequence.md).  
-Статус: **locked for this slice** (лекції 1–5). Bonus / PSP routing — не в цьому логу.
+Статус: **07 closed** (лекції 1–5 + log + sequence). Bonus / PSP routing — не в цьому логу.
 
 ---
 

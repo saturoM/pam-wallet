@@ -530,6 +530,41 @@ a.ghost {
   border: 1px solid var(--brass);
 }
 
+.drill-stim {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  background: #fff;
+  border-left: 3px solid var(--paper-rule);
+  font-size: 14px;
+  color: #3a342c;
+}
+
+.drill-write {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.drill-write textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 8px 10px;
+  border: 1px solid var(--paper-rule);
+  background: #fff;
+  font: inherit;
+  resize: vertical;
+}
+
+.drill-classify {
+  grid-template-columns: 1fr;
+}
+
+.exam-why {
+  margin: 10px 0 0;
+  font-size: 14px;
+}
+
 @media (max-width: 860px) {
   .identity,
   .steps,

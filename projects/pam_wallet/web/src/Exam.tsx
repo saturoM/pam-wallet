@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   quizApi,
+  reconQuizApi,
   type CheckResult,
   type PostingAnswer,
   type PublicQuestion,
@@ -40,7 +41,8 @@ const KEY_PREFIXES = [
   "payout_fail:wd_1",
 ];
 
-export function Exam() {
+export function Exam({ pack = "money" }: { pack?: "money" | "recon" }) {
+  const api = pack === "recon" ? reconQuizApi : quizApi;
   const [paper, setPaper] = useState<QuizPaper | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [answers, setAnswers] = useState<QuizAnswers>({});
@@ -50,11 +52,11 @@ export function Exam() {
   const [checking, setChecking] = useState<string | null>(null);
 
   useEffect(() => {
-    void quizApi
+    void api
       .paper()
       .then(setPaper)
       .catch((e) => setError(String(e)));
-  }, []);
+  }, [api]);
 
   const patch = (id: string, next: QuizAnswers[string]) => {
     setAnswers((a) => ({ ...a, [id]: { ...a[id], ...next } }));
@@ -70,7 +72,7 @@ export function Exam() {
     setChecking(id);
     setError(null);
     try {
-      const r = await quizApi.check(id, answers[id] ?? {});
+      const r = await api.check(id, answers[id] ?? {});
       setChecks((c) => ({ ...c, [id]: r }));
     } catch (e) {
       setError(String(e));
@@ -83,7 +85,7 @@ export function Exam() {
     setBusy(true);
     setError(null);
     try {
-      setResult(await quizApi.grade(answers));
+      setResult(await api.grade(answers));
     } catch (e) {
       setError(String(e));
     } finally {
@@ -95,16 +97,40 @@ export function Exam() {
     <div className="page exam-page">
       <header className="top">
         <div>
-          <p className="kicker">Тест · лекції 1–5</p>
+          <p className="kicker">{pack === "recon" ? "Тест · recon" : "Тест · лекції 1–5"}</p>
           <h1>{paper?.title ?? "Завантаження…"}</h1>
         </div>
-        <a className="ghost nav-link" href="#/">
-          На desk
-        </a>
+        <div className="top-actions">
+          <a className="ghost nav-link" href="#/">
+            На desk
+          </a>
+          {pack === "recon" ? (
+            <a className="ghost nav-link" href="#/exam">
+              Тест 1–5
+            </a>
+          ) : (
+            <a className="ghost nav-link" href="#/exam-recon">
+              Тест recon
+            </a>
+          )}
+          <a className="ghost nav-link" href="#/drill">
+            Гім
+          </a>
+        </div>
       </header>
       <p className="lede">
         PAM перевіряє відповіді. Касир сюди не пише баланс. ~{paper?.minutes ?? 20} хв.
       </p>
+      {pack === "recon" ? (
+        <details className="exam-crib" open>
+          <summary>Recon — не проводка</summary>
+          <p>
+            <strong>balanced</strong> = книга сама з собою. Recon = PAM vs файл PSP. Різниця $0.01 —
+            break, не рядок <code>recon_adjust</code>. Два HTTP на той самий <code>rnd_1</code> — не
+            діра.
+          </p>
+        </details>
+      ) : (
       <details className="exam-crib" open>
         <summary>Debit / credit / ключ — не вгадувати назви</summary>
         <p>
@@ -173,6 +199,7 @@ export function Exam() {
           </li>
         </ul>
       </details>
+      )}
       {error && <p className="err">{error}</p>}
       {result && (
         <p className="exam-score" data-testid="exam-score">
@@ -191,6 +218,7 @@ export function Exam() {
               key={q.id}
               n={i + 1}
               q={q}
+              pack={pack}
               value={answers[q.id]}
               marked={result?.items.find((m) => m.id === q.id)}
               check={checks[q.id]}
@@ -218,6 +246,7 @@ export function Exam() {
 function Question(props: {
   n: number;
   q: PublicQuestion;
+  pack: "money" | "recon";
   value: QuizAnswers[string] | undefined;
   marked: { ok: boolean; explanation: string } | undefined;
   check: CheckResult | undefined;
@@ -225,13 +254,13 @@ function Question(props: {
   onChange: (next: QuizAnswers[string]) => void;
   onCheck: () => void;
 }) {
-  const { n, q, value, marked, check, checking, onChange, onCheck } = props;
+  const { n, q, pack, value, marked, check, checking, onChange, onCheck } = props;
   const tone = marked ?? check;
   return (
     <li className={`exam-q${tone ? (tone.ok ? " ok" : " bad") : ""}`}>
       <p>
         <span className="exam-n">
-          {n} · лекція {q.lecture}
+          {pack === "recon" ? `${n} · recon` : `${n} · лекція ${q.lecture}`}
         </span>
         {q.prompt}
       </p>

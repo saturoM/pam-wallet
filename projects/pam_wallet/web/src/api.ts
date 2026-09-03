@@ -178,6 +178,44 @@ export type QuizResult = {
 
 export type CheckResult = { ok: boolean; hint?: string };
 
+export type DrillKind = "write" | "classify";
+
+export type PublicCard = {
+  id: string;
+  kind: DrillKind;
+  title: string;
+  stimulus: string;
+  task: string;
+  fields?: { id: string; prompt: string; options: string[] }[];
+};
+
+export type DrillPaper = {
+  title: string;
+  minutes: number;
+  cards: PublicCard[];
+};
+
+export type DrillAnswer = {
+  text?: string;
+  classify?: Record<string, string>;
+};
+
+export type DrillAnswers = Record<string, DrillAnswer>;
+
+export const drillApi = {
+  paper: () => json<DrillPaper>("/api/drill"),
+  check: (id: string, answer: DrillAnswer) =>
+    json<CheckResult>("/api/drill/check", {
+      method: "POST",
+      body: JSON.stringify({ id, answer }),
+    }),
+  grade: (answers: DrillAnswers) =>
+    json<QuizResult>("/api/drill/grade", {
+      method: "POST",
+      body: JSON.stringify({ answers }),
+    }),
+};
+
 export const quizApi = {
   paper: () => json<QuizPaper>("/api/quiz"),
   check: (id: string, answer: QuizAnswers[string]) =>
@@ -187,6 +225,20 @@ export const quizApi = {
     }),
   grade: (answers: QuizAnswers) =>
     json<QuizResult>("/api/quiz/grade", {
+      method: "POST",
+      body: JSON.stringify({ answers }),
+    }),
+};
+
+export const reconQuizApi = {
+  paper: () => json<QuizPaper>("/api/quiz/recon"),
+  check: (id: string, answer: QuizAnswers[string]) =>
+    json<CheckResult>("/api/quiz/recon/check", {
+      method: "POST",
+      body: JSON.stringify({ id, answer }),
+    }),
+  grade: (answers: QuizAnswers) =>
+    json<QuizResult>("/api/quiz/recon/grade", {
       method: "POST",
       body: JSON.stringify({ answers }),
     }),

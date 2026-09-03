@@ -26,6 +26,8 @@ Gym: `GET /api/drill` · `POST /api/drill/check` · `POST /api/drill/grade`. **8
 
 Walk: Deposit $50 → captured → Submit KYC → Approve KYC → Withdraw $20 → Payout sent.
 
+Recon on the same desk: **Run recon** compares PAM postings to the PSP file. Plant fee/chargeback/lost webhook desyncs the file only. Named `fee:psp_fee` / `chargeback:dep_*` close the break. `recon_adjust` returns 403.
+
 Same desk, same book. Lectures live in [`learn/`](../../learn/).
 
 - **self-excluded** / **frozen** → no new deposit, no new bet. Open rounds still settle. Self-excluded **can withdraw**.

@@ -8,6 +8,17 @@ import {
   type PlayerStatus,
 } from "./gates";
 import { GateBlocked, InsufficientFunds, Ledger, LedgerError, type Posting } from "./ledger";
+import {
+  emptyTotals,
+  runRecon,
+  sumPsp,
+  type MoneyKind,
+  type PspLine,
+  type ReconReport,
+  type ReconTotals,
+} from "./recon";
+
+export type { PspLine, ReconReport } from "./recon";
 
 export const HOUSE = "house";
 export const PLAYERS = ["p_1", "p_2"] as const;
@@ -85,6 +96,8 @@ export type DeskSnapshot = {
   rounds: Round[];
   postings: Posting[];
   gateLog: GateDecision[];
+  pspFile: PspLine[];
+  recon: ReconReport | null;
 };
 
 export class Pam {
@@ -97,6 +110,9 @@ export class Pam {
   private readonly rounds = new Map<string, Round>();
   private readonly playerState = new Map<string, PlayerGateState>();
   private readonly gateLog: GateDecision[] = [];
+  private readonly pspFile: PspLine[] = [];
+  private lastRecon: ReconReport | null = null;
+  private betHttp = 0;
 
   private stateOf(playerId: string): PlayerGateState {
     let s = this.playerState.get(playerId);
@@ -264,6 +280,8 @@ export class Pam {
         dep.status = "captured";
         dep.pspTransactionId = pspTransactionId;
         this.pspTxnToDeposit.set(pspTransactionId, depositId);
+        this.addPspLine("captured", dep.amountCents, depositId);
+        this.lastRecon = null;
       }
       return dep;
     }
@@ -283,6 +301,8 @@ export class Pam {
       if (existing.playerId !== playerId || existing.stakeCents !== stakeCents) {
         throw new LedgerError("round_id already used with a different intent");
       }
+      this.betHttp += 1;
+      this.lastRecon = null;
       return existing;
     }
     try {
@@ -317,6 +337,8 @@ export class Pam {
       idempotencyKey: `bet:${roundId}`,
       event: "bet",
     });
+    this.betHttp += 1;
+    this.lastRecon = null;
     const rnd: Round = {
       roundId,
       playerId,
@@ -468,6 +490,8 @@ export class Pam {
         w.status = "sent";
         w.pspTransactionId = pspTransactionId;
         this.pspTxnToWithdraw.set(pspTransactionId, withdrawId);
+        this.addPspLine("payout", w.amountCents, withdrawId);
+        this.lastRecon = null;
       }
       return w;
     }
@@ -528,6 +552,110 @@ export class Pam {
       rounds: [...this.rounds.values()],
       postings: [...this.ledger.postings],
       gateLog: [...this.gateLog],
+      pspFile: [...this.pspFile],
+      recon: this.lastRecon,
     };
+  }
+
+  private addPspLine(kind: MoneyKind, amountCents: number, ref: string): boolean {
+    if (this.pspFile.some((l) => l.kind === kind && l.ref === ref)) return false;
+    this.pspFile.push({ kind, amountCents, ref });
+    return true;
+  }
+
+  private pamMoney(): ReconTotals {
+    const t = emptyTotals();
+    const eventToKind: Record<string, MoneyKind> = {
+      deposit_captured: "captured",
+      payout_sent: "payout",
+      psp_fee: "fee",
+      chargeback: "chargeback",
+    };
+    for (const p of this.ledger.postings) {
+      const kind = eventToKind[p.event];
+      if (kind) t[kind] += p.amountCents;
+    }
+    return t;
+  }
+
+  runRecon(): ReconReport {
+    this.lastRecon = runRecon({
+      booksOk: this.ledger.booksBalance(),
+      pam: this.pamMoney(),
+      psp: sumPsp(this.pspFile),
+      betHttp: this.betHttp,
+      betRows: this.rounds.size,
+    });
+    return this.lastRecon;
+  }
+
+  /** PSP file only. Books stay balanced. Lecture $0.01. */
+  plantPspFee(): PspLine {
+    const captured = [...this.deposits.values()].find((d) => d.status === "captured");
+    if (!captured) throw new LedgerError("need a captured deposit before planting a PSP fee");
+    if (!this.addPspLine("fee", 1, "psp_fee")) throw new LedgerError("PSP fee already on the file");
+    this.lastRecon = null;
+    return this.pspFile.at(-1)!;
+  }
+
+  /** PSP file only. PAM still thinks cash_at_psp holds the deposit. */
+  plantPspChargeback(): PspLine {
+    const captured = [...this.deposits.values()].reverse().find((d) => d.status === "captured");
+    if (!captured) throw new LedgerError("need a captured deposit before planting a chargeback");
+    if (!this.addPspLine("chargeback", captured.amountCents, captured.depositId)) {
+      throw new LedgerError("PSP already has that chargeback");
+    }
+    this.lastRecon = null;
+    return this.pspFile.at(-1)!;
+  }
+
+  /** PSP captured, PAM still pending — lost webhook. */
+  plantGhostCapture(): PspLine {
+    const pending = [...this.deposits.values()].reverse().find((d) => d.status === "pending");
+    if (!pending) throw new LedgerError("need a pending deposit to plant a ghost capture");
+    if (!this.addPspLine("captured", pending.amountCents, pending.depositId)) {
+      throw new LedgerError("PSP already has that capture");
+    }
+    this.lastRecon = null;
+    return this.pspFile.at(-1)!;
+  }
+
+  /** Named fee. Not recon_adjust. */
+  postPspFee(): void {
+    if (!this.pspFile.some((l) => l.kind === "fee" && l.ref === "psp_fee")) {
+      throw new LedgerError("no PSP fee on the file to name");
+    }
+    const applied = this.ledger.post({
+      debit: HOUSE,
+      credit: "cash_at_psp",
+      amountCents: 1,
+      idempotencyKey: "fee:psp_fee",
+      event: "psp_fee",
+    });
+    if (!applied) return;
+    this.lastRecon = null;
+  }
+
+  /** Named chargeback. Takes player cash if still there, else house eats it. */
+  postChargeback(): void {
+    const line = [...this.pspFile].reverse().find((l) => l.kind === "chargeback");
+    if (!line) throw new LedgerError("no PSP chargeback on the file to name");
+    const dep = this.deposits.get(line.ref);
+    if (!dep) throw new LedgerError(`unknown deposit_id ${line.ref}`);
+    const available = this.ledger.signedBalance(cashAcct(dep.playerId));
+    const debit = available >= line.amountCents ? cashAcct(dep.playerId) : HOUSE;
+    const applied = this.ledger.post({
+      debit,
+      credit: "cash_at_psp",
+      amountCents: line.amountCents,
+      idempotencyKey: `chargeback:${line.ref}`,
+      event: "chargeback",
+    });
+    if (!applied) return;
+    this.lastRecon = null;
+  }
+
+  reconAdjust(): never {
+    throw new GateBlocked("RECON_ADJUST", "Break is not a posting. No recon_adjust.");
   }
 }

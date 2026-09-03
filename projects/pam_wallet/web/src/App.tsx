@@ -162,6 +162,123 @@ export function App() {
         </div>
       </section>
 
+      <section className="recon-desk" aria-label="PAM vs PSP recon">
+        <div className="recon-head">
+          <div>
+            <h2>Recon · PAM vs PSP file</h2>
+            <p>
+              Green <b>balanced</b> is the book with itself. This button compares <b>two pictures</b>.
+              A break is not a ledger row.
+            </p>
+          </div>
+          <button
+            data-testid="run-recon"
+            className="primary"
+            disabled={busy}
+            onClick={() => void run(() => api.runRecon())}
+          >
+            Run recon
+          </button>
+        </div>
+        <details className="recon-hint" data-testid="recon-walk-hint">
+          <summary>Walk hint</summary>
+          <p>
+            Reset desk before each walk. Do not mix fee and ghost on the same book. After plant or
+            fix, click <b>Run recon</b> again.
+          </p>
+          <ol>
+            <li>
+              <b>A · $0.01 fee.</b> Deposit $50 → Webhook captured → Run recon (clean) → Plant PSP
+              fee $0.01 → Run recon (break fee $0.01, books still balanced) → recon_adjust
+              (rejected) → Post fee · fee:psp_fee → Run recon (clean). Player stays $50. Cash at
+              PSP $49.99, house −$0.01.
+            </li>
+            <li>
+              <b>B · retry is not a break.</b> Reset → Deposit $50 → captured → place_bet $10 →
+              Retry same round → Run recon. Clean + “2 HTTP vs 1 PAM row”.
+            </li>
+            <li>
+              <b>C · lost webhook.</b> Reset → Deposit $50 (pending) → PSP captured, no webhook →
+              Run recon (captured PAM $0 vs PSP $50) → Webhook captured → Run recon (clean).
+            </li>
+          </ol>
+        </details>
+        <div className="recon-actions">
+          <div>
+            <h3>Break (PSP file only)</h3>
+            <button
+              data-testid="plant-fee"
+              disabled={busy || !desk.deposits.some((d) => d.status === "captured") || desk.pspFile.some((l) => l.kind === "fee")}
+              onClick={() => void run(() => api.plantPspFee())}
+            >
+              Plant PSP fee $0.01
+            </button>
+            <button
+              data-testid="plant-chargeback"
+              disabled={
+                busy ||
+                !desk.deposits.some((d) => d.status === "captured") ||
+                desk.pspFile.some((l) => l.kind === "chargeback")
+              }
+              onClick={() => void run(() => api.plantPspChargeback())}
+            >
+              Plant chargeback
+            </button>
+            <button
+              data-testid="plant-ghost"
+              disabled={busy || !desk.deposits.some((d) => d.status === "pending")}
+              onClick={() => void run(() => api.plantGhostCapture())}
+            >
+              PSP captured, no webhook
+            </button>
+          </div>
+          <div>
+            <h3>Fix (named posting)</h3>
+            <button
+              data-testid="fix-fee"
+              disabled={busy || !desk.pspFile.some((l) => l.kind === "fee")}
+              onClick={() => void run(() => api.postPspFee())}
+            >
+              Post fee · fee:psp_fee
+            </button>
+            <button
+              data-testid="fix-chargeback"
+              disabled={busy || !desk.pspFile.some((l) => l.kind === "chargeback")}
+              onClick={() => void run(() => api.postChargeback())}
+            >
+              Post chargeback
+            </button>
+            <button
+              data-testid="recon-adjust"
+              disabled={busy}
+              onClick={() => void run(() => api.reconAdjust())}
+            >
+              recon_adjust (rejected)
+            </button>
+          </div>
+        </div>
+        {desk.recon ? (
+          <div className={`recon-result${desk.recon.clean ? " ok" : " bad"}`} data-testid="recon-result">
+            <p>
+              {desk.recon.clean ? "Clean vs PSP file." : "Break."} Books{" "}
+              {desk.recon.booksOk ? "balanced" : "broken inside PAM"}.
+            </p>
+            {desk.recon.breaks.map((b) => (
+              <p key={b.kind}>
+                {b.kind}: PAM {usd(b.pamCents)} vs PSP {usd(b.pspCents)} → {usd(b.amountCents)}
+              </p>
+            ))}
+            {desk.recon.notBreaks.map((n) => (
+              <p key={n.id} className="recon-not">
+                Not a break: {n.detail}
+              </p>
+            ))}
+          </div>
+        ) : (
+          <p className="recon-idle">No recon yet. Capture $50, then Run recon — should be clean.</p>
+        )}
+      </section>
+
       <nav className="steps" aria-label="Money path">
         {(
           [
@@ -545,6 +662,39 @@ export function App() {
                   </td>
                   <td>{k.playerId}</td>
                   <td>{k.status}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </section>
+
+      <section className="journal">
+        <header>
+          <h2>PSP file</h2>
+          <span>second picture · not the ledger</span>
+        </header>
+        {(desk.pspFile ?? []).length === 0 ? (
+          <p className="empty">Empty. Capture / payout write lines here. Plant adds a line without a PAM row.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>kind</th>
+                <th>amount</th>
+                <th>ref</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(desk.pspFile ?? []).map((l, i) => (
+                <tr key={`${l.kind}-${l.ref}`}>
+                  <td>{i + 1}</td>
+                  <td>{l.kind}</td>
+                  <td>{usd(l.amountCents)}</td>
+                  <td>
+                    <code>{l.ref}</code>
+                  </td>
                 </tr>
               ))}
             </tbody>

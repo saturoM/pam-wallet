@@ -59,6 +59,40 @@ export class PamService {
     this.pam.onPayoutWebhook(withdrawId, status, pspTransactionId);
     return this.pam.snapshot();
   }
+
+  runRecon(): DeskSnapshot {
+    this.pam.runRecon();
+    return this.pam.snapshot();
+  }
+
+  plantPspFee(): DeskSnapshot {
+    this.pam.plantPspFee();
+    return this.pam.snapshot();
+  }
+
+  plantPspChargeback(): DeskSnapshot {
+    this.pam.plantPspChargeback();
+    return this.pam.snapshot();
+  }
+
+  plantGhostCapture(): DeskSnapshot {
+    this.pam.plantGhostCapture();
+    return this.pam.snapshot();
+  }
+
+  postPspFee(): DeskSnapshot {
+    this.pam.postPspFee();
+    return this.pam.snapshot();
+  }
+
+  postChargeback(): DeskSnapshot {
+    this.pam.postChargeback();
+    return this.pam.snapshot();
+  }
+
+  reconAdjust(): never {
+    return this.pam.reconAdjust();
+  }
 }
 
 /** tsx/esbuild does not emit constructor paramtypes — one in-memory book. */

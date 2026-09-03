@@ -35,4 +35,4 @@
 
 Борд з графіком, кілька PSP, бонус. Спочатку: що є break, що не є проводкою, що replay ставки не break.
 
-Далі: тест `#/exam-recon` · практика `exercises/03_recon.md`.
+Далі: тест `#/exam-recon` · практика `exercises/03_recon.md` · на desk кнопка **Run recon** (звірка, не проводка).

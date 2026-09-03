@@ -35,6 +35,8 @@ npm run dev --prefix web
 
 Walk on the desk: Deposit $50 → captured → Submit KYC → Approve KYC → Withdraw $20 → Payout sent.
 
+Recon: after capture, **Run recon** (clean). **Plant PSP fee $0.01** → Run recon (break) → `recon_adjust` is rejected → **Post fee** → Run recon (clean). Retry the same `round_id` is not a PSP break.
+
 One process in production: build the React app, then Nest serves desk + exam + `/api`.
 
 ```bash

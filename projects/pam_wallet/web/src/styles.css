@@ -389,6 +389,142 @@ tr.fresh td {
   color: #8c4038;
 }
 
+.recon-desk {
+  margin: 0 0 18px;
+  padding: 14px 16px 16px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.recon-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+}
+
+.recon-desk h2 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.recon-desk h3 {
+  margin: 12px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.recon-desk p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.recon-head button {
+  width: auto;
+  margin: 0;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--brass);
+  border: 1px solid var(--brass);
+}
+
+.recon-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.recon-actions button {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.recon-result {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.recon-result p {
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.recon-result.ok {
+  border-color: var(--moss);
+}
+
+.recon-result.bad {
+  border-color: var(--fail);
+}
+
+.recon-not {
+  color: var(--muted) !important;
+}
+
+.recon-idle {
+  margin-top: 10px !important;
+}
+
+.recon-hint {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.recon-hint summary {
+  cursor: pointer;
+  color: var(--brass);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  list-style: none;
+}
+
+.recon-hint summary::-webkit-details-marker {
+  display: none;
+}
+
+.recon-hint summary::before {
+  content: "▸ ";
+}
+
+.recon-hint[open] summary::before {
+  content: "▾ ";
+}
+
+.recon-hint p {
+  margin: 8px 0 0;
+}
+
+.recon-hint ol {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--ink);
+}
+
+.recon-hint li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 860px) {
+  .recon-head,
+  .recon-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
 .top-actions {
   display: flex;
   gap: 8px;

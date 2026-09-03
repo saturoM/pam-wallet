@@ -66,6 +66,32 @@ export type Posting = {
   event: string;
 };
 
+export type MoneyKind = "captured" | "payout" | "fee" | "chargeback";
+
+export type PspLine = {
+  kind: MoneyKind;
+  amountCents: number;
+  ref: string;
+};
+
+export type ReconTotals = Record<MoneyKind, number>;
+
+export type ReconBreak = {
+  kind: MoneyKind;
+  pamCents: number;
+  pspCents: number;
+  amountCents: number;
+};
+
+export type ReconReport = {
+  booksOk: boolean;
+  clean: boolean;
+  pam: ReconTotals;
+  psp: ReconTotals;
+  breaks: ReconBreak[];
+  notBreaks: { id: string; detail: string }[];
+};
+
 export type DeskSnapshot = {
   booksOk: boolean;
   cashAtPspCents: number;
@@ -78,6 +104,8 @@ export type DeskSnapshot = {
   rounds: Round[];
   postings: Posting[];
   gateLog: GateDecision[];
+  pspFile: PspLine[];
+  recon: ReconReport | null;
 };
 
 const idlePlayer: PlayerView = {
@@ -105,6 +133,8 @@ export const emptyDesk: DeskSnapshot = {
   rounds: [],
   postings: [],
   gateLog: [],
+  pspFile: [],
+  recon: null,
 };
 
 export class ApiError extends Error {
@@ -292,6 +322,13 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ withdrawId, status, pspTransactionId }),
     }),
+  runRecon: () => send("/api/recon", { method: "POST", body: "{}" }),
+  plantPspFee: () => send("/api/recon/plant/fee", { method: "POST", body: "{}" }),
+  plantPspChargeback: () => send("/api/recon/plant/chargeback", { method: "POST", body: "{}" }),
+  plantGhostCapture: () => send("/api/recon/plant/ghost-capture", { method: "POST", body: "{}" }),
+  postPspFee: () => send("/api/recon/fix/fee", { method: "POST", body: "{}" }),
+  postChargeback: () => send("/api/recon/fix/chargeback", { method: "POST", body: "{}" }),
+  reconAdjust: () => send("/api/recon/fix/adjust", { method: "POST", body: "{}" }),
 };
 
 export function usd(cents: number): string {

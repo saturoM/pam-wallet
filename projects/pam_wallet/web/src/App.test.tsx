@@ -77,6 +77,17 @@ beforeEach(() => {
       snap.cashAtPspCents = 3000;
       return ok(snap);
     }
+    if (path.endsWith("/api/recon")) {
+      snap.recon = {
+        booksOk: true,
+        clean: true,
+        pam: { captured: 0, payout: 0, fee: 0, chargeback: 0 },
+        psp: { captured: 0, payout: 0, fee: 0, chargeback: 0 },
+        breaks: [],
+        notBreaks: [],
+      };
+      return ok(snap);
+    }
     return ok(snap);
   });
 });

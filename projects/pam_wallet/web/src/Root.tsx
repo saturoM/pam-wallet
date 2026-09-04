@@ -3,7 +3,8 @@ import { App } from "./App";
 import { Drill } from "./Drill";
 import { Exam } from "./Exam";
 
-function route(): "exam-rg" | "exam-recon" | "exam" | "drill" | "desk" {
+function route(): "exam-psp" | "exam-rg" | "exam-recon" | "exam" | "drill" | "desk" {
+  if (location.hash.startsWith("#/exam-psp")) return "exam-psp";
   if (location.hash.startsWith("#/exam-rg")) return "exam-rg";
   if (location.hash.startsWith("#/exam-recon")) return "exam-recon";
   if (location.hash.startsWith("#/exam")) return "exam";
@@ -18,6 +19,7 @@ export function Root() {
     window.addEventListener("hashchange", sync);
     return () => window.removeEventListener("hashchange", sync);
   }, []);
+  if (page === "exam-psp") return <Exam pack="psp" />;
   if (page === "exam-rg") return <Exam pack="rg" />;
   if (page === "exam-recon") return <Exam pack="recon" />;
   if (page === "exam") return <Exam pack="money" />;

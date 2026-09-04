@@ -3,6 +3,7 @@ import {
   quizApi,
   reconQuizApi,
   rgQuizApi,
+  pspQuizApi,
   type CheckResult,
   type PostingAnswer,
   type PublicQuestion,
@@ -11,7 +12,7 @@ import {
   type QuizResult,
 } from "./api";
 
-type ExamPack = "money" | "recon" | "rg";
+type ExamPack = "money" | "recon" | "rg" | "psp";
 
 const FIELD_LABEL: Record<string, string> = {
   new_postings: "нових проводок",
@@ -45,7 +46,14 @@ const KEY_PREFIXES = [
 ];
 
 export function Exam({ pack = "money" }: { pack?: ExamPack }) {
-  const api = pack === "recon" ? reconQuizApi : pack === "rg" ? rgQuizApi : quizApi;
+  const api =
+    pack === "recon"
+      ? reconQuizApi
+      : pack === "rg"
+        ? rgQuizApi
+        : pack === "psp"
+          ? pspQuizApi
+          : quizApi;
   const [paper, setPaper] = useState<QuizPaper | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [answers, setAnswers] = useState<QuizAnswers>({});
@@ -101,13 +109,22 @@ export function Exam({ pack = "money" }: { pack?: ExamPack }) {
       <header className="top">
         <div>
           <p className="kicker">
-            {pack === "rg" ? "Тест · RG" : pack === "recon" ? "Тест · recon" : "Тест · лекції 1–5"}
+            {pack === "psp"
+              ? "Тест · PSP"
+              : pack === "rg"
+                ? "Тест · RG"
+                : pack === "recon"
+                  ? "Тест · recon"
+                  : "Тест · лекції 1–5"}
           </p>
           <h1>{paper?.title ?? "Завантаження…"}</h1>
         </div>
         <div className="top-actions">
           <a className="ghost nav-link" href="#/">
             На desk
+          </a>
+          <a className="ghost nav-link" href="#/exam-psp">
+            Тест PSP
           </a>
           <a className="ghost nav-link" href="#/exam-rg">
             Тест RG
@@ -126,7 +143,17 @@ export function Exam({ pack = "money" }: { pack?: ExamPack }) {
       <p className="lede">
         PAM перевіряє відповіді. Касир сюди не пише баланс. ~{paper?.minutes ?? 20} хв.
       </p>
-      {pack === "rg" ? (
+      {pack === "psp" ? (
+        <details className="exam-crib" open>
+          <summary>Шпаргалка · PSP</summary>
+          <ul>
+            <li>3DS ok ≠ FILL. FILL = <code>captured</code>.</li>
+            <li>3DS fail → <code>failed</code>. Не retry як capture.</li>
+            <li>Cascade = новий <code>deposit_id</code> після soft decline.</li>
+            <li>Hard decline — без cascade. Ключ книги = <code>deposit_id</code>.</li>
+          </ul>
+        </details>
+      ) : pack === "rg" ? (
         <details className="exam-crib" open>
           <summary>RG — прапорець, не проводка</summary>
           <p>

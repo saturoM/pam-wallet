@@ -14,19 +14,15 @@ Live: [desk](https://pam-wallet.onrender.com/) · repo: [saturoM/pam-wallet](htt
 | 01 + 07 | decision_log.md · sequence.md |
 | 02 spec craft | 02_decision_log.md · 02_sequence.md · `#/drill` |
 | 03 recon | 03_decision_log.md · 03_sequence.md · `#/exam-recon` · desk recon |
-| **04 RG** | 04_terms.md · `#/exam-rg` · exercises/04_rg.md · desk walk · 04_decision_log.md / 04_sequence.md |
+| 04 RG | 04_terms.md · `#/exam-rg` · desk walk · 04_decision_log.md / 04_sequence.md |
+| **05 PSP** | 05_terms.md · `#/exam-psp` · exercises/05_psp.md · 05_decision_log.md / 05_sequence.md |
 
-## Now · 05 PSP routing
+## Now · 06 bonus / wagering (ще не стартували)
 
-1. Терміни [`05_terms.md`](05_terms.md) → лекція [`05_psp.md`](05_psp.md)
-2. Тест [`#/exam-psp`](https://pam-wallet.onrender.com/#/exam-psp) (після рестарту API / деплою)
-3. Практика [`exercises/05_psp.md`](exercises/05_psp.md)
-4. Потім decision log + sequence · mocks routing на desk після walk
-
-Не плутати з [`05_withdraw.md`](05_withdraw.md) (лекція 5 грошового шляху).
+Decision log + sequence: wagering + один abuse hold на payout. Cash vs bonus — два pocket, не один баланс з лейблом.
 
 ## Later
 
-06 bonus · **08 KYC/AML** · **09 chargeback** · **10 jurisdiction** · **11 platform teardown** · 60s EN pitch · 3 JDs.
+**08 KYC/AML** · **09 chargeback** · **10 jurisdiction** · **11 platform teardown** · 60s EN pitch · 3 JDs.
 
-Пітч — після 05–06 і 08–11.
+Optional: multi-PSP mocks on desk (після 05 walk). Пітч — після 06 і 08–11.

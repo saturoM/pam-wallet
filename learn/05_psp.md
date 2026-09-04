@@ -45,4 +45,4 @@ PSP шле свої коди. PAM має **таблицю**: код → `pending
 
 Bonus / wagering (06), KYC глибше (08), chargeback (09), живий teardown казино (11). Мocks routing на desk — після walk / sequence.
 
-Далі: тест `#/exam-psp` · практика `exercises/05_psp.md`.
+Closed: `#/exam-psp` · `exercises/05_psp.md` · [`05_decision_log.md`](05_decision_log.md) · [`05_sequence.md`](05_sequence.md).

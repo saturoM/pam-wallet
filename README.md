@@ -8,7 +8,7 @@ Cashiers and games never write balance. Only PAM posts a double-entry ledger. De
 
 This repo is the money-path pack: lectures 1–5, recon, RG, PSP routing in progress, a desk you can click, exams Nest grades, and a spot-the-slip gym. First Render hit after sleep can take ~30s. In-memory book resets on restart.
 
-**Now (module 05):** PSP routing — terms + lecture + `#/exam-psp`. 04 RG is **closed**. After 06: 08 KYC/AML · 09 chargeback · 10 jurisdiction · 11 platform teardown (no desk). Pitch last.
+**Next (module 06):** bonus / wagering — not started. 05 PSP is **closed** (`#/exam-psp` · log/sequence). After 06: 08 KYC/AML · 09 chargeback · 10 jurisdiction · 11 platform teardown. Pitch last.
 
 ## What’s in here
 
@@ -17,7 +17,7 @@ This repo is the money-path pack: lectures 1–5, recon, RG, PSP routing in prog
 | [`learn/`](learn/) | Lectures 1–5 · recon · RG (`04_rg.md`) · [progress](learn/progress.md) · logs / sequences |
 | [`projects/pam_wallet/`](projects/pam_wallet/) | React cashier + Nest PAM + Python kernel |
 
-Not in this repo: live trading bots, bonus/wagering, PSP routing.
+Not in this repo: live trading bots, bonus/wagering (module 06 next).
 
 ## Run the desk
 
@@ -63,7 +63,7 @@ Live: [https://pam-wallet.onrender.com](https://pam-wallet.onrender.com/). Redep
 
 6. [`03_recon.md`](learn/03_recon.md) — module 03 · recon (balanced ≠ PSP). Test: `#/exam-recon`.
 7. [`04_rg.md`](learn/04_rg.md) — **module 04 closed** · RG. Terms: [`04_terms.md`](learn/04_terms.md). Test: `#/exam-rg`.
-8. [`05_psp.md`](learn/05_psp.md) — **module 05 in progress** · PSP routing. Terms: [`05_terms.md`](learn/05_terms.md). Test: `#/exam-psp`.
+8. [`05_psp.md`](learn/05_psp.md) — **module 05 closed** · PSP routing. Terms: [`05_terms.md`](learn/05_terms.md). Test: `#/exam-psp`. Log: [`05_decision_log.md`](learn/05_decision_log.md) · [`05_sequence.md`](learn/05_sequence.md).
 
 ## Decision (short)
 

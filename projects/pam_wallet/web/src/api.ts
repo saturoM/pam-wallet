@@ -316,6 +316,20 @@ export const bonusQuizApi = {
     }),
 };
 
+export const kycQuizApi = {
+  paper: () => json<QuizPaper>("/api/quiz/kyc"),
+  check: (id: string, answer: QuizAnswers[string]) =>
+    json<CheckResult>("/api/quiz/kyc/check", {
+      method: "POST",
+      body: JSON.stringify({ id, answer }),
+    }),
+  grade: (answers: QuizAnswers) =>
+    json<QuizResult>("/api/quiz/kyc/grade", {
+      method: "POST",
+      body: JSON.stringify({ answers }),
+    }),
+};
+
 export const api = {
   desk: () => send("/api/desk"),
   reset: () => send("/api/reset", { method: "POST" }),

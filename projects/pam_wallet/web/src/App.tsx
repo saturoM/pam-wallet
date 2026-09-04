@@ -112,6 +112,9 @@ export function App() {
           <h1>PAM owns the book. Cashier only reads.</h1>
         </div>
         <div className="top-actions">
+          <a className="ghost nav-link" href="#/exam-kyc">
+            Тест KYC
+          </a>
           <a className="ghost nav-link" href="#/exam-bonus">
             Тест Bonus
           </a>

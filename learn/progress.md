@@ -7,19 +7,14 @@ Live: [desk](https://pam-wallet.onrender.com/) · repo: [saturoM/pam-wallet](htt
 
 ## Passed
 
-| Item | Proof |
-|---|---|
-| Lectures 1–5 + exam | `#/exam` |
-| 01 + 07 | decision_log · sequence |
-| 02 · 03 · 04 · 05 | closed |
-| **06 Bonus** | 06_terms · `#/exam-bonus` · exercises/06_bonus · 06_decision_log / 06_sequence |
+01–08 closed (money · recon · RG · PSP · bonus · KYC). Desk walk 08 skipped.
 
-## Now · 08 KYC / AML (ще не стартували)
+## Now · 09–11 (сьогодні: log + sequence)
 
-Три гейти: до KYC / після KYC / після EDD. Webhook провайдера ≠ PAM статус, поки PAM не записав. Failed KYC не void відкритого раунду.
+| # | Тема | Формат |
+|---|---|---|
+| **09** | Chargeback / dispute | терміни → короткий lock → log + sequence (exam optional) |
+| **10** | Jurisdiction matrix | sequence-only |
+| **11** | Platform teardown | sequence-only |
 
-## Later
-
-**09 chargeback** · **10 jurisdiction** · **11 platform teardown** · 60s EN pitch · 3 JDs.
-
-Пітч — після 08–11.
+Потім: 60s EN pitch · 3 JDs.

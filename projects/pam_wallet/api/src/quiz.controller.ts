@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { checkBonusQuestion, gradeBonusQuiz, publicBonusQuiz } from "./quiz_bonus";
+import { checkKycQuestion, gradeKycQuiz, publicKycQuiz } from "./quiz_kyc";
 import { checkQuestion, gradeQuiz, publicQuiz, type QuizAnswers } from "./quiz";
 import { checkPspQuestion, gradePspQuiz, publicPspQuiz } from "./quiz_psp";
 import { checkReconQuestion, gradeReconQuiz, publicReconQuiz } from "./quiz_recon";
@@ -80,5 +81,20 @@ export class QuizController {
   @Post("quiz/bonus/grade")
   bonusGrade(@Body() body: { answers?: QuizAnswers }) {
     return gradeBonusQuiz(body.answers ?? {});
+  }
+
+  @Get("quiz/kyc")
+  kycPaper() {
+    return publicKycQuiz();
+  }
+
+  @Post("quiz/kyc/check")
+  kycCheck(@Body() body: { id?: string; answer?: QuizAnswers[string] }) {
+    return checkKycQuestion(body.id ?? "", body.answer);
+  }
+
+  @Post("quiz/kyc/grade")
+  kycGrade(@Body() body: { answers?: QuizAnswers }) {
+    return gradeKycQuiz(body.answers ?? {});
   }
 }

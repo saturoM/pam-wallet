@@ -4,11 +4,11 @@ Interview artifact for a Senior Technical PM (iGaming / fintech).
 
 Cashiers and games never write balance. Only PAM posts a double-entry ledger. Deposit click is TAKE. PSP `captured` is FILL.
 
-**Open without install:** [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam) · [recon](https://pam-wallet.onrender.com/#/exam-recon) · [RG](https://pam-wallet.onrender.com/#/exam-rg) · [PSP](https://pam-wallet.onrender.com/#/exam-psp) · [Bonus](https://pam-wallet.onrender.com/#/exam-bonus) · [drill](https://pam-wallet.onrender.com/#/drill)
+**Open without install:** [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam) · [recon](https://pam-wallet.onrender.com/#/exam-recon) · [RG](https://pam-wallet.onrender.com/#/exam-rg) · [PSP](https://pam-wallet.onrender.com/#/exam-psp) · [Bonus](https://pam-wallet.onrender.com/#/exam-bonus) · [KYC](https://pam-wallet.onrender.com/#/exam-kyc) · [drill](https://pam-wallet.onrender.com/#/drill)
 
-This repo is the money-path pack: lectures 1–5, recon, RG, PSP, bonus/wagering, a desk you can click, exams Nest grades, and a spot-the-slip gym. First Render hit after sleep can take ~30s. In-memory book resets on restart.
+This repo is the money-path pack: lectures 1–5, recon, RG, PSP, bonus, KYC, a desk you can click, exams Nest grades, and a spot-the-slip gym. First Render hit after sleep can take ~30s. In-memory book resets on restart.
 
-**Next (module 08):** KYC / AML — not started. 06 bonus is **closed** (`#/exam-bonus` · log/sequence). Then 09 chargeback · 10 jurisdiction · 11 platform teardown. Pitch last.
+**Next (modules 09–11):** chargeback · jurisdiction · platform teardown. 08 KYC is **closed** (`#/exam-kyc` · log/sequence; desk walk skipped). Pitch last.
 
 ## What’s in here
 
@@ -65,6 +65,7 @@ Live: [https://pam-wallet.onrender.com](https://pam-wallet.onrender.com/). Redep
 7. [`04_rg.md`](learn/04_rg.md) — **module 04 closed** · RG. Terms: [`04_terms.md`](learn/04_terms.md). Test: `#/exam-rg`.
 8. [`05_psp.md`](learn/05_psp.md) — **module 05 closed** · PSP routing. Terms: [`05_terms.md`](learn/05_terms.md). Test: `#/exam-psp`. Log: [`05_decision_log.md`](learn/05_decision_log.md) · [`05_sequence.md`](learn/05_sequence.md).
 9. [`06_bonus.md`](learn/06_bonus.md) — **module 06 closed** · bonus / wagering. Terms: [`06_terms.md`](learn/06_terms.md). Test: `#/exam-bonus`. Log: [`06_decision_log.md`](learn/06_decision_log.md) · [`06_sequence.md`](learn/06_sequence.md).
+10. [`08_kyc.md`](learn/08_kyc.md) — **module 08 closed** · KYC / AML. Terms: [`08_terms.md`](learn/08_terms.md). Test: `#/exam-kyc`. Log: [`08_decision_log.md`](learn/08_decision_log.md) · [`08_sequence.md`](learn/08_sequence.md).
 
 ## Decision (short)
 

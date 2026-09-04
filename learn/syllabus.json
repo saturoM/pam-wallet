@@ -3,7 +3,7 @@
   "as_of": "2026-09-03",
   "goal": "Senior technical PM · gambling / fintech",
   "method": "Each module 02–06 and 08–09 closes with decision log + sequence + desk walk (same as 01/07). 10 and 11 are sequence-only (jurisdiction matrix · live platform teardown). Pitch last.",
-  "current_module": "08_kyc_aml",
+  "current_module": "09_chargeback",
   "close_rule": "career/learn/module_close.md",
   "modules": [
     {
@@ -72,30 +72,35 @@
     {
       "id": "08_kyc_aml",
       "week": 10,
-      "status": "pending",
+      "status": "closed",
       "skill": "Project 5 · KYC / AML eligibility",
-      "done_when": "Lecture + exam + practice + desk walk. Three gates: before KYC / after KYC / after EDD (deposit vs play vs withdraw). Provider webhook is not PAM status until PAM writes the flag. Failed KYC does not void an open round."
+      "file": "career/learn/08_kyc.md",
+      "exercise": "career/learn/exercises/08_kyc.md",
+      "done_when": "Lecture + #/exam-kyc + practice + 08_decision_log.md / 08_sequence.md. Three gates; vendor webhook ≠ PAM until PAM writes; reject does not void open round. Desk walk optional — skipped on close."
     },
     {
       "id": "09_chargeback",
       "week": 11,
-      "status": "pending",
+      "status": "in_progress",
       "skill": "Project 6 · chargeback / dispute hold",
-      "done_when": "Lecture + exam + practice + desk walk. Dispute is not a withdraw. Ledger hold with a dispute key. Do not debit the same deposit twice. Representment vs lost chargeback are two outcomes."
+      "file": "career/learn/09_chargeback.md",
+      "done_when": "09_decision_log.md / 09_sequence.md. Dispute ≠ withdraw. One dispute key per deposit. Hold before lost. Representment vs lost are two outcomes. Exam/desk optional for condensed close."
     },
     {
       "id": "10_jurisdiction",
       "week": 12,
-      "status": "pending",
+      "status": "in_progress",
       "skill": "Config · jurisdiction matrix",
-      "done_when": "Decision log + sequence only (no desk). UK vs MGA vs one US-style market: where KYC sits, which RG tools are mandatory, whether bonus cash is ring-fenced. Regulation → defaults, not a new bot."
+      "file": "career/learn/10_decision_log.md",
+      "done_when": "10_decision_log.md / 10_sequence.md only (no desk). UK vs MGA vs US-style matrix: KYC when, RG, bonus ring-fence."
     },
     {
       "id": "11_platform_teardown",
       "week": 13,
-      "status": "pending",
+      "status": "in_progress",
       "skill": "Research · cashier / PAM teardown",
-      "done_when": "Decision log + sequence only (no desk). Same money-path walk on two live operators + one PAM vendor public doc. Columns: KYC when, deposit TAKE vs FILL, RG tools, withdraw, cash vs bonus. Name who owns each hop (PAM / PSP / game / frontend). Not lobby, VIP, or game mix."
+      "file": "career/learn/11_decision_log.md",
+      "done_when": "11_decision_log.md / 11_sequence.md. Template filled for 2 operators + 1 PAM vendor (user may fill live later). Money path only."
     }
   ]
 }

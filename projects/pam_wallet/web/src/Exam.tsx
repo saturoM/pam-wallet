@@ -4,6 +4,7 @@ import {
   reconQuizApi,
   rgQuizApi,
   pspQuizApi,
+  bonusQuizApi,
   type CheckResult,
   type PostingAnswer,
   type PublicQuestion,
@@ -12,7 +13,7 @@ import {
   type QuizResult,
 } from "./api";
 
-type ExamPack = "money" | "recon" | "rg" | "psp";
+type ExamPack = "money" | "recon" | "rg" | "psp" | "bonus";
 
 const FIELD_LABEL: Record<string, string> = {
   new_postings: "нових проводок",
@@ -53,7 +54,9 @@ export function Exam({ pack = "money" }: { pack?: ExamPack }) {
         ? rgQuizApi
         : pack === "psp"
           ? pspQuizApi
-          : quizApi;
+          : pack === "bonus"
+            ? bonusQuizApi
+            : quizApi;
   const [paper, setPaper] = useState<QuizPaper | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [answers, setAnswers] = useState<QuizAnswers>({});
@@ -109,19 +112,24 @@ export function Exam({ pack = "money" }: { pack?: ExamPack }) {
       <header className="top">
         <div>
           <p className="kicker">
-            {pack === "psp"
-              ? "Тест · PSP"
-              : pack === "rg"
-                ? "Тест · RG"
-                : pack === "recon"
-                  ? "Тест · recon"
-                  : "Тест · лекції 1–5"}
+            {pack === "bonus"
+              ? "Тест · Bonus"
+              : pack === "psp"
+                ? "Тест · PSP"
+                : pack === "rg"
+                  ? "Тест · RG"
+                  : pack === "recon"
+                    ? "Тест · recon"
+                    : "Тест · лекції 1–5"}
           </p>
           <h1>{paper?.title ?? "Завантаження…"}</h1>
         </div>
         <div className="top-actions">
           <a className="ghost nav-link" href="#/">
             На desk
+          </a>
+          <a className="ghost nav-link" href="#/exam-bonus">
+            Тест Bonus
           </a>
           <a className="ghost nav-link" href="#/exam-psp">
             Тест PSP
@@ -143,7 +151,17 @@ export function Exam({ pack = "money" }: { pack?: ExamPack }) {
       <p className="lede">
         PAM перевіряє відповіді. Касир сюди не пише баланс. ~{paper?.minutes ?? 20} хв.
       </p>
-      {pack === "psp" ? (
+      {pack === "bonus" ? (
+        <details className="exam-crib" open>
+          <summary>Шпаргалка · Bonus</summary>
+          <ul>
+            <li>Cash і bonus — <strong>дві</strong> кишені (ring-fence).</li>
+            <li>Грант ≠ PSP <code>captured</code>. Wagering = оборот ×N.</li>
+            <li>Вивід cash при відкритому bonus → <strong>forfeit</strong> bonus.</li>
+            <li>Abuse → <strong>hold</strong> на payout, не <code>payout_sent</code>.</li>
+          </ul>
+        </details>
+      ) : pack === "psp" ? (
         <details className="exam-crib" open>
           <summary>Шпаргалка · PSP</summary>
           <ul>

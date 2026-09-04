@@ -3,7 +3,7 @@
   "as_of": "2026-09-03",
   "goal": "Senior technical PM · gambling / fintech",
   "method": "Each module 02–06 and 08–09 closes with decision log + sequence + desk walk (same as 01/07). 10 and 11 are sequence-only (jurisdiction matrix · live platform teardown). Pitch last.",
-  "current_module": "06_bonus_abuse",
+  "current_module": "08_kyc_aml",
   "close_rule": "career/learn/module_close.md",
   "modules": [
     {
@@ -54,9 +54,11 @@
     {
       "id": "06_bonus_abuse",
       "week": 8,
-      "status": "pending",
+      "status": "closed",
       "skill": "Project 4 · wagering",
-      "done_when": "Decision log + sequence for wagering + one abuse hold on payout. Cash vs bonus is ring-fenced (two pockets), not one balance with a label."
+      "file": "career/learn/06_bonus.md",
+      "exercise": "career/learn/exercises/06_bonus.md",
+      "done_when": "Lecture + #/exam-bonus + practice + 06_decision_log.md / 06_sequence.md. Cash vs bonus ring-fenced. Wagering = turnover. Early cash withdraw forfeits open bonus. Abuse hold on payout, not payout_sent. Desk mocks optional after close."
     },
     {
       "id": "07_case_studies",

@@ -4,11 +4,11 @@ Interview artifact for a Senior Technical PM (iGaming / fintech).
 
 Cashiers and games never write balance. Only PAM posts a double-entry ledger. Deposit click is TAKE. PSP `captured` is FILL.
 
-**Open without install:** [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam) · [recon](https://pam-wallet.onrender.com/#/exam-recon) · [RG](https://pam-wallet.onrender.com/#/exam-rg) · [PSP](https://pam-wallet.onrender.com/#/exam-psp) · [drill](https://pam-wallet.onrender.com/#/drill)
+**Open without install:** [desk](https://pam-wallet.onrender.com/) · [exam](https://pam-wallet.onrender.com/#/exam) · [recon](https://pam-wallet.onrender.com/#/exam-recon) · [RG](https://pam-wallet.onrender.com/#/exam-rg) · [PSP](https://pam-wallet.onrender.com/#/exam-psp) · [Bonus](https://pam-wallet.onrender.com/#/exam-bonus) · [drill](https://pam-wallet.onrender.com/#/drill)
 
-This repo is the money-path pack: lectures 1–5, recon, RG, PSP routing in progress, a desk you can click, exams Nest grades, and a spot-the-slip gym. First Render hit after sleep can take ~30s. In-memory book resets on restart.
+This repo is the money-path pack: lectures 1–5, recon, RG, PSP, bonus/wagering, a desk you can click, exams Nest grades, and a spot-the-slip gym. First Render hit after sleep can take ~30s. In-memory book resets on restart.
 
-**Next (module 06):** bonus / wagering — not started. 05 PSP is **closed** (`#/exam-psp` · log/sequence). After 06: 08 KYC/AML · 09 chargeback · 10 jurisdiction · 11 platform teardown. Pitch last.
+**Next (module 08):** KYC / AML — not started. 06 bonus is **closed** (`#/exam-bonus` · log/sequence). Then 09 chargeback · 10 jurisdiction · 11 platform teardown. Pitch last.
 
 ## What’s in here
 
@@ -17,7 +17,7 @@ This repo is the money-path pack: lectures 1–5, recon, RG, PSP routing in prog
 | [`learn/`](learn/) | Lectures 1–5 · recon · RG (`04_rg.md`) · [progress](learn/progress.md) · logs / sequences |
 | [`projects/pam_wallet/`](projects/pam_wallet/) | React cashier + Nest PAM + Python kernel |
 
-Not in this repo: live trading bots, bonus/wagering (module 06 next).
+Not in this repo: live trading bots. Bonus desk mocks optional after module 06.
 
 ## Run the desk
 
@@ -64,6 +64,7 @@ Live: [https://pam-wallet.onrender.com](https://pam-wallet.onrender.com/). Redep
 6. [`03_recon.md`](learn/03_recon.md) — module 03 · recon (balanced ≠ PSP). Test: `#/exam-recon`.
 7. [`04_rg.md`](learn/04_rg.md) — **module 04 closed** · RG. Terms: [`04_terms.md`](learn/04_terms.md). Test: `#/exam-rg`.
 8. [`05_psp.md`](learn/05_psp.md) — **module 05 closed** · PSP routing. Terms: [`05_terms.md`](learn/05_terms.md). Test: `#/exam-psp`. Log: [`05_decision_log.md`](learn/05_decision_log.md) · [`05_sequence.md`](learn/05_sequence.md).
+9. [`06_bonus.md`](learn/06_bonus.md) — **module 06 closed** · bonus / wagering. Terms: [`06_terms.md`](learn/06_terms.md). Test: `#/exam-bonus`. Log: [`06_decision_log.md`](learn/06_decision_log.md) · [`06_sequence.md`](learn/06_sequence.md).
 
 ## Decision (short)
 

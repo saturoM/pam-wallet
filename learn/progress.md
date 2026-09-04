@@ -10,19 +10,16 @@ Live: [desk](https://pam-wallet.onrender.com/) · repo: [saturoM/pam-wallet](htt
 | Item | Proof |
 |---|---|
 | Lectures 1–5 + exam | `#/exam` |
-| Live desk + GitHub | pam-wallet.onrender.com |
-| 01 + 07 | decision_log.md · sequence.md |
-| 02 spec craft | 02_decision_log.md · 02_sequence.md · `#/drill` |
-| 03 recon | 03_decision_log.md · 03_sequence.md · `#/exam-recon` · desk recon |
-| 04 RG | 04_terms.md · `#/exam-rg` · desk walk · 04_decision_log.md / 04_sequence.md |
-| **05 PSP** | 05_terms.md · `#/exam-psp` · exercises/05_psp.md · 05_decision_log.md / 05_sequence.md |
+| 01 + 07 | decision_log · sequence |
+| 02 · 03 · 04 · 05 | closed |
+| **06 Bonus** | 06_terms · `#/exam-bonus` · exercises/06_bonus · 06_decision_log / 06_sequence |
 
-## Now · 06 bonus / wagering (ще не стартували)
+## Now · 08 KYC / AML (ще не стартували)
 
-Decision log + sequence: wagering + один abuse hold на payout. Cash vs bonus — два pocket, не один баланс з лейблом.
+Три гейти: до KYC / після KYC / після EDD. Webhook провайдера ≠ PAM статус, поки PAM не записав. Failed KYC не void відкритого раунду.
 
 ## Later
 
-**08 KYC/AML** · **09 chargeback** · **10 jurisdiction** · **11 platform teardown** · 60s EN pitch · 3 JDs.
+**09 chargeback** · **10 jurisdiction** · **11 platform teardown** · 60s EN pitch · 3 JDs.
 
-Optional: multi-PSP mocks on desk (після 05 walk). Пітч — після 06 і 08–11.
+Пітч — після 08–11.

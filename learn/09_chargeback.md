@@ -12,4 +12,4 @@
 | Hold | Спочатку hold / reverse у ledger; не тихий `balance -=` |
 | Два outcomes | Representment won → зняти hold; lost → остаточний збиток (house / expense) |
 
-Recon на desk уже знає plant chargeback — цей модуль фіксує **продуктову** розвилку для PM.
+Closed: terms · L2 in chat · [`09_decision_log.md`](09_decision_log.md) · [`09_sequence.md`](09_sequence.md). Exam/desk optional. Shortfall policy = later row.

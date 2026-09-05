@@ -1,25 +1,24 @@
-# Progress · TPM iGaming (as of 2026-09-04)
+# Progress · TPM iGaming (as of 2026-09-05)
 
 **Goal.** Senior / Technical PM (iGaming, wallet, PAM).  
-**Cadence.** Лекція → тест у desk → практика. Пітч — в кінці.
+**Cadence.** Лекція → практика / L2 · log+sequence. Пітч — в кінці.
 
 Live: [desk](https://pam-wallet.onrender.com/) · repo: [saturoM/pam-wallet](https://github.com/saturoM/pam-wallet)
 
 ## Passed
 
-01–08 closed (money · recon · RG · PSP · bonus · KYC). Desk walk 08 skipped.
+01–**09** closed (incl. chargeback L2 + sequence drill).
 
-## Now · 09–11 (сьогодні: log + sequence)
+## Now · 10 Jurisdiction (~40 min session)
 
-| # | Тема | Формат |
-|---|---|---|
-| **09** | Chargeback / dispute | терміни → короткий lock → log + sequence (exam optional) |
-| **10** | Jurisdiction matrix | sequence-only |
-| **11** | Platform teardown | sequence-only |
+1. Прочитати [`10_decision_log.md`](10_decision_log.md) · [`10_sequence.md`](10_sequence.md)  
+2. L2 у чаті (config vs fork · матриця)  
+3. Закрити 10 → далі 11 teardown  
 
-Потім: 60s EN pitch · 3 JDs.
+## Later
 
-## Drill · 2026-09-05
+**11** platform teardown · 60s EN pitch · 3 JDs.
 
-Тренажер log scaffold: [`drills/decision_log_scaffold.md`](drills/decision_log_scaffold.md).  
-Сесія: L1/L2 по 05–06, L3 по 08-C (вендор ≠ PAM). Hard decline ≠ статус акаунта; ring-fence ≠ wagering.
+## Drill
+
+[`drills/decision_log_scaffold.md`](drills/decision_log_scaffold.md) · spot-the-slip `#/drill`.

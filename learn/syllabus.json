@@ -3,7 +3,7 @@
   "as_of": "2026-09-03",
   "goal": "Senior technical PM · gambling / fintech",
   "method": "Each module 02–06 and 08–09 closes with decision log + sequence + desk walk (same as 01/07). 10 and 11 are sequence-only (jurisdiction matrix · live platform teardown). Pitch last.",
-  "current_module": "09_chargeback",
+  "current_module": "10_jurisdiction",
   "close_rule": "career/learn/module_close.md",
   "modules": [
     {
@@ -81,10 +81,10 @@
     {
       "id": "09_chargeback",
       "week": 11,
-      "status": "in_progress",
+      "status": "closed",
       "skill": "Project 6 · chargeback / dispute hold",
       "file": "career/learn/09_chargeback.md",
-      "done_when": "09_decision_log.md / 09_sequence.md. Dispute ≠ withdraw. One dispute key per deposit. Hold before lost. Representment vs lost are two outcomes. Exam/desk optional for condensed close."
+      "done_when": "09_terms + lecture + L2 drill in chat + 09_decision_log.md / 09_sequence.md. Dispute ≠ withdraw. One dispute key per deposit. Hold before lost. Won vs lost. Shortfall ($50 CB / $30 pocket) = separate policy row later. Exam/desk optional."
     },
     {
       "id": "10_jurisdiction",

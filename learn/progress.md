@@ -1,24 +1,19 @@
 # Progress · TPM iGaming (as of 2026-09-05)
 
 **Goal.** Senior / Technical PM (iGaming, wallet, PAM).  
-**Cadence.** Лекція → практика / L2 · log+sequence. Пітч — в кінці.
+**Cadence.** Лекція → L2 · log+sequence. Пітч — в кінці.
 
 Live: [desk](https://pam-wallet.onrender.com/) · repo: [saturoM/pam-wallet](https://github.com/saturoM/pam-wallet)
 
 ## Passed
 
-01–**09** closed (incl. chargeback L2 + sequence drill).
+01–**10** closed.
 
-## Now · 10 Jurisdiction (~40 min session)
+## Now · 11 Platform teardown (останній learn-модуль)
 
-1. Прочитати [`10_decision_log.md`](10_decision_log.md) · [`10_sequence.md`](10_sequence.md)  
-2. L2 у чаті (config vs fork · матриця)  
-3. Закрити 10 → далі 11 teardown  
+Money-path walk на 2 операторах + 1 PAM vendor doc. Не лобі/VIP.  
+Файли: [`11_decision_log.md`](11_decision_log.md) · [`11_sequence.md`](11_sequence.md).
 
-## Later
+## After 11
 
-**11** platform teardown · 60s EN pitch · 3 JDs.
-
-## Drill
-
-[`drills/decision_log_scaffold.md`](drills/decision_log_scaffold.md) · spot-the-slip `#/drill`.
+60s EN pitch · 3 JDs.

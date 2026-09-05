@@ -3,7 +3,7 @@
   "as_of": "2026-09-03",
   "goal": "Senior technical PM · gambling / fintech",
   "method": "Each module 02–06 and 08–09 closes with decision log + sequence + desk walk (same as 01/07). 10 and 11 are sequence-only (jurisdiction matrix · live platform teardown). Pitch last.",
-  "current_module": "10_jurisdiction",
+  "current_module": "11_platform_teardown",
   "close_rule": "career/learn/module_close.md",
   "modules": [
     {
@@ -89,10 +89,10 @@
     {
       "id": "10_jurisdiction",
       "week": 12,
-      "status": "in_progress",
+      "status": "closed",
       "skill": "Config · jurisdiction matrix",
       "file": "career/learn/10_decision_log.md",
-      "done_when": "10_decision_log.md / 10_sequence.md only (no desk). UK vs MGA vs US-style matrix: KYC when, RG, bonus ring-fence."
+      "done_when": "L2 in chat + 10_decision_log.md / 10_sequence.md. Config matrix not code fork. Desk ≠ global. UK vs MGA deposit-without-KYC difference checked."
     },
     {
       "id": "11_platform_teardown",
@@ -100,7 +100,7 @@
       "status": "in_progress",
       "skill": "Research · cashier / PAM teardown",
       "file": "career/learn/11_decision_log.md",
-      "done_when": "11_decision_log.md / 11_sequence.md. Template filled for 2 operators + 1 PAM vendor (user may fill live later). Money path only."
+      "done_when": "11_decision_log.md / 11_sequence.md. Template for 2 operators + 1 PAM vendor. Money path only. Live table fill optional later."
     }
   ]
 }

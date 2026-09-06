@@ -1,9 +1,9 @@
 {
   "id": "tpm_igaming_learn",
-  "as_of": "2026-09-03",
+  "as_of": "2026-09-06",
   "goal": "Senior technical PM · gambling / fintech",
   "method": "Each module 02–06 and 08–09 closes with decision log + sequence + desk walk (same as 01/07). 10 and 11 are sequence-only (jurisdiction matrix · live platform teardown). Pitch last.",
-  "current_module": "11_platform_teardown",
+  "current_module": "pitch_jds",
   "close_rule": "career/learn/module_close.md",
   "modules": [
     {
@@ -97,10 +97,10 @@
     {
       "id": "11_platform_teardown",
       "week": 13,
-      "status": "in_progress",
+      "status": "closed",
       "skill": "Research · cashier / PAM teardown",
       "file": "career/learn/11_decision_log.md",
-      "done_when": "11_decision_log.md / 11_sequence.md. Template for 2 operators + 1 PAM vendor. Money path only. Live table fill optional later."
+      "done_when": "11_decision_log.md / 11_sequence.md filled: LeoVegas UK + Slots777 + SoftSwiss KB. Money path only. Live deposit optional later."
     }
   ]
 }

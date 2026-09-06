@@ -8,7 +8,7 @@ Cashiers and games never write balance. Only PAM posts a double-entry ledger. De
 
 This repo is the money-path pack: lectures 1–5, recon, RG, PSP, bonus, KYC, a desk you can click, exams Nest grades, and a spot-the-slip gym. First Render hit after sleep can take ~30s. In-memory book resets on restart.
 
-**Next (modules 09–11):** chargeback · jurisdiction · platform teardown. 08 KYC is **closed** (`#/exam-kyc` · log/sequence; desk walk skipped). Pitch last.
+**Learn 01–11 closed** (incl. platform teardown). Next: 60s EN pitch · 3 JDs.
 
 ## What’s in here
 

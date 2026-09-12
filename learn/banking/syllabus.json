@@ -1,0 +1,64 @@
+{
+  "id": "tpm_banking_money_path",
+  "as_of": "2026-09-13",
+  "goal": "Technical PM · fintech / banking rails (bridge from iGaming PAM)",
+  "method": "Six short modules. Each: one idea → terms → open exercise → close when you can explain the sequence to another PM. Bridge column maps PAM language you already know.",
+  "current_module": "01_available_vs_ledger",
+  "base": "Assumes pam-wallet modules 01–05, 08–09 closed (TAKE≠FILL, posting, recon, PSP, KYC, chargeback).",
+  "modules": [
+    {
+      "id": "01_available_vs_ledger",
+      "status": "open",
+      "skill": "Available ≠ ledger balance; holds",
+      "file": "learn/banking/01_available_vs_ledger.md",
+      "exercise": "learn/banking/exercises/01_balances.md",
+      "bridge": "TAKE≠FILL / pending vs player_cash",
+      "done_when": "Name available, ledger, hold; one posting sketch for inbound SEPA credit"
+    },
+    {
+      "id": "02_payment_statuses",
+      "status": "open",
+      "skill": "Auth / clear / settle / return vocabulary",
+      "file": "learn/banking/02_payment_statuses.md",
+      "exercise": "learn/banking/exercises/02_statuses.md",
+      "bridge": "captured vs settle; webhook idempotency",
+      "done_when": "Map card auth→clear→settle and SEPA accepted→settled→returned to PAM moments"
+    },
+    {
+      "id": "03_sepa_rails",
+      "status": "open",
+      "skill": "SEPA SCT / Instant as product rails",
+      "file": "learn/banking/03_sepa_rails.md",
+      "exercise": "learn/banking/exercises/03_sepa.md",
+      "bridge": "PSP routing / soft vs hard decline",
+      "done_when": "Decision: when Instant vs SCT; what UI shows before settlement"
+    },
+    {
+      "id": "04_cards_issuing",
+      "status": "open",
+      "skill": "Card issuing basics for PM",
+      "file": "learn/banking/04_cards_issuing.md",
+      "exercise": "learn/banking/exercises/04_cards.md",
+      "bridge": "3DS, chargeback, PCI footnote",
+      "done_when": "Auth hold → clear; decline vs return; who owns BIN/PCI"
+    },
+    {
+      "id": "05_baas_vs_license",
+      "status": "open",
+      "skill": "BaaS vs own license product boundary",
+      "file": "learn/banking/05_baas_vs_license.md",
+      "exercise": "learn/banking/exercises/05_baas.md",
+      "bridge": "white-label / contract boundary at Kyrrex",
+      "done_when": "One-pager: what you own vs partner; kill criteria for BaaS"
+    },
+    {
+      "id": "06_kyb_aml_product",
+      "status": "open",
+      "skill": "KYC/KYB + perpetual AML as product gates",
+      "file": "learn/banking/06_kyb_aml_product.md",
+      "exercise": "learn/banking/exercises/06_kyb.md",
+      "bridge": "module 08 KYC on withdraw → banking onboarding + ongoing",
+      "done_when": "Gate matrix: open account / send money / issue card; vendor webhook ≠ bank until you write"
+    }
+  ]
+}
